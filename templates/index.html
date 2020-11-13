@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking crises prediction</title>
+  
+<style>
+  form {
+  background-color: #f1f1f1;
+  padding: 0px 20px;
+  margin: 0px 20;
+}
+  input[type=text] {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+
+}
+</style>
+</head>
+    <body>
+        <h1> The goal of the project is predict banking crises in Africa.</h1>
+            <div class="login"></div>
+            <h2>Predict banking crises for your country</h2>
+             <!-- Main Input For Receiving Query to our ML -->
+            <form action="{{ url_for('predict')}}"method="post">
+                <input type="text" name="year" placeholder="Enter the year" required="required"/> <br>
+                <input type="text" name="exch_usd" placeholder=" Enter exchange rate of the country vis-a-vis the USD" required="required" /> <br>
+                <input type="text" name="domestic_debt_in_default" placeholder="Enter 0 if Sovereign domestic debt default occurred in the year and 1 if otherwise" required="required" /> <br>
+                <input type="text" name="sovereign_external_debt_default" placeholder=" Enter 0 if no sovereign external debt default occurred in the year and 1 if yes" required="required" /> <br>
+                <input type="text" name="gdp_weighted_default" placeholder="What is the total debt in default vis-a-vis the GDP?" required="required" width:100%/> <br>
+                <input type="text" name="inflation_annual_cpi" placeholder="What is the annual CPI Inflation rate?" required="required" width:100%/> <br>
+                <input type="text" name="independence" placeholder="Enter 0 if  no independence and 1 if independence" required="required" /> <br>
+                <input type="text" name="currency_crises" placeholder="Enter 0 if  no currency crisis occurred in the year and 1 if a currency crisis occurred in the year" required="required" /> <br>
+                <input type="text" name="inflation_crises" placeholder=" Enter 0 if no inflation crisis occurred in the year and enter 1 if an inflation crisis occurred in the year" required="required" /> <br>
+        <br>
+                <button type="submit" class="btn btn-primary btn-block btn-large"><b>Predict</b></button>
+            </form>
+        
+           <br>
+           <br>
+           {{ prediction_text }}
+        
+         </div>
+    </body>
+
+</html>
